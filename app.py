@@ -6,6 +6,7 @@ from dashboard.usage import show_usage
 from dashboard.opname import show_opname
 from dashboard.sales_product import show_sales_product
 from dashboard.usage_product import show_usage_product
+from utils.gsheet_loader import load_sheet
 
 st.set_page_config(layout="wide")
 
@@ -37,3 +38,8 @@ elif menu == "Sales per Product":
 
 elif menu == "Usage per Product":
     show_usage_product()
+st.title("📊 F&B Control Dashboard")
+
+# TEST GOOGLE SHEET
+st.subheader("🧪 Test Load Sheet")
+st.write(load_sheet("pricing"))
