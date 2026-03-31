@@ -9,11 +9,12 @@ def get_all_stock():
     return stock.groupby(["ingredient_id","unit"])["qty"].sum().reset_index()
 
 
-def get_real_stock():
+def get_real_stock(selected_date=None):
     from modules.recipe.recipe_service import calculate_usage
 
     stock = get_all_stock()
-    usage = calculate_usage()
+
+    usage = calculate_usage(end_date=selected_date)
 
     merged = stock.merge(usage, on=["ingredient_id","unit"], how="left")
     merged["total_usage"] = merged["total_usage"].fillna(0)
