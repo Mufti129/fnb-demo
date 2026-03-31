@@ -1,6 +1,7 @@
 import pandas as pd
 from utils.gsheet_loader import load_sheet
 
+
 def get_all_stock():
     g1 = load_sheet("stock_gudang_1")
     g2 = load_sheet("stock_gudang_2")
